@@ -1,12 +1,20 @@
 Base path: 'D:/2019.2.8f1/Editor/Data', plugins path 'D:/2019.2.8f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: compileComputeKernel
-  api=4 insize=3070 outsize=47803 ok=1
+  api=18 insize=1176 outsize=3060 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=10881 outsize=10429 ok=1
+  api=18 insize=10881 outsize=40156 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4855 outsize=5412 ok=1
+  api=18 insize=4855 outsize=17333 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=18299 outsize=10338 ok=1
+  api=4 insize=4855 outsize=4117 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3396 outsize=2622 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=18299 outsize=33265 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=18299 outsize=57023 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=3072 outsize=1259 ok=1
 
 Quitting shader compiler process
