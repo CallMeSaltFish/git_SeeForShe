@@ -17,13 +17,17 @@ public class ScreenChangement : MonoBehaviour
     private Image my_Image;  //获取图片
     private float my_Alpha;  //获取Alpha值
     private float upadate_Speed; //变化速度
+    public float Upadate_Speed { get { return upadate_Speed; } set { upadate_Speed = value; } }
     private Color temp;
 
     private Status my_Status;
     public Status My_Status { get { return my_Status; } set { my_Status = value; } }
-    void Start()
+    private bool filished;
+    public bool Filished { get { return filished; } set { filished = value; } }
+    void Awake()
     {
-        my_Status = Status.UpdateIn;
+        filished = false;
+        my_Status = Status.None;
         my_Alpha = 0f;
         upadate_Speed = 0.75f;
         my_Image = this.GetComponent<Image>();
@@ -55,6 +59,7 @@ public class ScreenChangement : MonoBehaviour
     {
         if(my_Alpha > 1)
         {
+            filished = true;
             my_Status = Status.None;
             my_Alpha = 1f;
         }
@@ -68,6 +73,7 @@ public class ScreenChangement : MonoBehaviour
     {
         if (my_Alpha < 0)
         {
+            filished = true;
             my_Status = Status.None;
             my_Alpha = 0f;
         }
