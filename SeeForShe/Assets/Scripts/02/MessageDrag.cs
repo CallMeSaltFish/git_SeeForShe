@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MessageDrag : MonoBehaviour, IDragHandler, IPointerDownHandler
-{
-    [SerializeField]
-    private Transform image;//所要控制的UI    
+{  
     public RectTransform canvas;//所在canvas     
     private RectTransform curRecTran;
     private Vector3 offet;
+    [SerializeField]
+    private GameObject aim;
 
     private void Start()    
     {        
-        curRecTran = transform.GetComponent<RectTransform>();    
-    }      
+        curRecTran = transform.GetComponent<RectTransform>();
+        canvas = transform.GetComponentInParent<RectTransform>();    }      
  
   
     public void OnPointerDown(PointerEventData eventData)    
@@ -34,15 +34,26 @@ public class MessageDrag : MonoBehaviour, IDragHandler, IPointerDownHandler
      /// <param name="eventData"></param>    
      public void OnDrag(PointerEventData eventData)   
      {
-        if (Input.touchCount == 1|| Input.GetMouseButton(0))        
+        if ((Input.touchCount == 1|| Input.GetMouseButton(0))&& curRecTran .anchoredPosition .y == 1077f)        
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(canvas, eventData.position))      
             {
-                Debug.Log(1);
-                Vector3 globalMousePos;     
+                Vector3 globalMousePos;
                 if (RectTransformUtility.ScreenPointToWorldPointInRectangle(curRecTran, eventData.position,        eventData.pressEventCamera, out globalMousePos))          
                 {
-                    curRecTran.position = globalMousePos + offet;           
+                    if (globalMousePos.x <= 415)
+                    {
+                        globalMousePos.x = 415;
+                        aim.SetActive(true);
+                        aim.GetComponent<RectTransform>().anchoredPosition = new Vector2(704f, 1080f);
+                    }
+                    else
+                    {
+                        aim.SetActive(false);
+                    }
+                    if(globalMousePos .x>=540)
+                        globalMousePos.x = 540;
+                    curRecTran.anchoredPosition = new Vector2(globalMousePos.x, curRecTran.anchoredPosition.y);           
                 }        
             }      
         }   

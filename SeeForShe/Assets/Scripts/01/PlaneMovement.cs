@@ -63,10 +63,14 @@ public class PlaneMovement : MonoBehaviour
         pos.y = shadow.anchoredPosition.y;
         shadow.anchoredPosition = pos;
         shadow.sizeDelta = change_Scale;
-        if (posX <= 0)
+        if (posX < 0)
         {
             move = false;
             flicker = true;  //出现下一步
+            paperPlane.GetComponent<ScreenChangement>().My_Status = ScreenChangement.Status.UpdateOut;
+            shadow.GetComponent<ScreenChangement>().My_Status = ScreenChangement.Status.UpdateOut;
+            screen_Alpha.GetComponent<ScreenChangement>().My_Status = ScreenChangement.Status.UpdateOut;
+            posX = 0f;
         }
     }
 
